@@ -13,7 +13,7 @@
         this.body.length = this.len;
         for (var i = 0; i < this.len; i++) {
             this.body[i] = {
-                x: this.x - i,
+                x: this.x - i, // We do this because the x,y specified are of the snake's head
                 y: this.y
             };
         }
