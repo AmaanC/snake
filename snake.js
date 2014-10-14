@@ -1,4 +1,13 @@
 (function (exports) {
+    var isColliding = function (part, rest) {
+        var ret = false;
+        for (var i = 0; i < rest.length; i++) {
+            if (part.x === rest[i].x && part.y === rest[i].y) {
+                ret = true;
+            }
+        }
+        return ret;
+    };
     var Snake = function (prop) {
         // prop is the object of optional properties passed
         prop = prop || {};
@@ -22,7 +31,17 @@
         var prevDirection;
         this.advance = function () {
             // console.log(this.body[0]);
-            var tail = this.body.pop();
+            if (this.grow === true) {
+                var last = this.body[this.body.length - 1];
+                var tail = {
+                    x: last.x,
+                    y: last.y
+                };
+                this.grow = false;
+            }
+            else {
+                var tail = this.body.pop();
+            }
             var head = this.body[0];
             prevDirection = this.dir.shift() || prevDirection; // If there's a new direction in the queue, use that, if not, continue with the previous one
             // console.log(prevDirection);
@@ -55,6 +74,10 @@
                 ticks = 30 / speed;
                 player.advance();
             }
+
+            if (isColliding(this.body[0], this.body.slice(1))) {
+                console.log('Game over');
+            }
         };
         var current;
         this.draw = function (ctx) {
@@ -71,7 +94,7 @@
         }
     };
 
-    var player = exports.player = new Snake({x: 5});
+    var player = exports.player = new Snake({x: 5, y: 1});
     var keyMap = {
         37: 'left',
         38: 'up',
