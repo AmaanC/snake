@@ -9,10 +9,10 @@
         return Math.floor(Math.random() * gridEnd[dir]);
     };
     console.log(gen('x'));
-    var isOverlapping = function (pellet, snake) {
+    exports.isOverlapping = function (part, array) {
         var ret = false;
-        for (var i = 0; i < snake.body.length; i++) {
-            if (pellet.x === snake.body[i].x && pellet.y === snake.body[i].y) {
+        for (var i = 0; i < array.length; i++) {
+            if (part.x === array[i].x && part.y === array[i].y) {
                 ret = true;
             }
         }
@@ -28,7 +28,7 @@
         this.move = function () {
             this.x = gen('x');
             this.y = gen('y');
-            if (isOverlapping(this, exports.player)) {
+            if (exports.isOverlapping(this, exports.player.body)) {
                 this.move();
             }
         };
@@ -39,14 +39,14 @@
         };
 
         this.logic = function () {
-            if (isOverlapping(this, exports.player)) {
+            if (exports.isOverlapping(this, exports.player.body)) {
                 exports.score++;
                 this.move();
                 exports.player.grow = true;
             }
         };
 
-        if (isOverlapping(this, exports.player)) {
+        if (exports.isOverlapping(this, exports.player.body)) {
             this.move();
         }
     };

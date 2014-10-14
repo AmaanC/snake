@@ -1,13 +1,4 @@
 (function (exports) {
-    var isColliding = function (part, rest) {
-        var ret = false;
-        for (var i = 0; i < rest.length; i++) {
-            if (part.x === rest[i].x && part.y === rest[i].y) {
-                ret = true;
-            }
-        }
-        return ret;
-    };
     var Snake = function (prop) {
         // prop is the object of optional properties passed
         prop = prop || {};
@@ -75,7 +66,7 @@
                 player.advance();
             }
 
-            if (isColliding(this.body[0], this.body.slice(1))) {
+            if (exports.isOverlapping(this.body[0], this.body.slice(1))) {
                 console.log('Game over');
             }
         };
