@@ -1,10 +1,11 @@
 (function (exports) {
     var Snake = function (prop) {
+        // prop is the object of optional properties passed
         prop = prop || {};
         this.x = prop.x || 0;
         this.y = prop.y || 0;
-        this.width = prop.width || 10;
-        this.height = prop.height || 10;
+        this.width = prop.width || 30;
+        this.height = prop.height || 30;
         this.dir = prop.dir || ['right'];
         this.len = prop.len || 3;
 
@@ -24,7 +25,7 @@
             var tail = this.body.pop();
             var head = this.body[0];
             prevDirection = this.dir.shift() || prevDirection; // If there's a new direction in the queue, use that, if not, continue with the previous one
-            console.log(prevDirection);
+            // console.log(prevDirection);
             switch (prevDirection) {
                 case 'right':
                     tail.x = head.x + 1;
@@ -78,7 +79,7 @@
         40: 'down'
     }
     document.body.addEventListener('keydown', function (e) {
-        console.log(e.keyCode);
+        // console.log(e.keyCode);
         if (e.keyCode in keyMap) {
             player.dir.push(keyMap[e.keyCode]);
         }
