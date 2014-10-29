@@ -1,12 +1,12 @@
 // This file will manage the food pellets, the score, and change of gameplay variables like speed
 (function (exports) {
     var canvas = document.getElementById('canvas');
-    var gridEnd = {
+    exports.gridEnd = {
         x: (canvas.width - exports.player.width) / exports.player.width,
         y: (canvas.height - exports.player.height) / exports.player.height
     }
     var gen = function (dir) {
-        return Math.floor(Math.random() * gridEnd[dir]);
+        return Math.floor(Math.random() * exports.gridEnd[dir]);
     };
     console.log(gen('x'));
     exports.isOverlapping = function (part, array) {

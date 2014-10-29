@@ -54,6 +54,9 @@
                     tail.y = head.y + 1;
                     break;
             }
+            if (tail.x < 0) {
+                tail.x = exports.gridEnd.x;
+            }
             this.body = [tail].concat(this.body);
             // console.log(this.body);
         };
