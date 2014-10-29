@@ -51,5 +51,5 @@
         }
     };
 
-    var food = exports.food = new Pellet(5, 1);
+    var food = exports.food = new Pellet();
 })(window.game);
