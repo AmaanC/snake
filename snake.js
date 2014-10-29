@@ -64,7 +64,9 @@
             if (tail.y < 0) {
                 tail.y = exports.gridEnd.y;
             }
-            
+            else (tail.y > exports.gridEnd.y) {
+                tail.y = 0;
+            }
             this.body = [tail].concat(this.body);
             // console.log(this.body);
         };
