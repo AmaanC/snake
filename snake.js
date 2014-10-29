@@ -54,6 +54,9 @@
                     tail.y = head.y + 1;
                     break;
             }
+
+            // Note that tail is the head of the snake after it has advanced. So here we make sure the head comes out through
+            // the other side if it goes out one
             if (tail.x < 0) {
                 tail.x = exports.gridEnd.x;
             }
