@@ -57,6 +57,10 @@
             if (tail.x < 0) {
                 tail.x = exports.gridEnd.x;
             }
+            else if (tail.x > exports.gridEnd.x) {
+                tail.x = 0;
+            }
+
             this.body = [tail].concat(this.body);
             // console.log(this.body);
         };
