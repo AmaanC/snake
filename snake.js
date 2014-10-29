@@ -81,6 +81,7 @@
 
             if (exports.isOverlapping(this.body[0], this.body.slice(1))) {
                 console.log('Game over');
+                player = exports.player = new Snake();
             }
         };
         var current;
